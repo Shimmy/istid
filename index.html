@@ -56,7 +56,7 @@
 	     console.log(errorMessage);
 	};
 	IAP.buy = function(productId){
-		  navigator.notification.confirm("Vill du köpa ett års abonnemang för ditt lag? Konstad 399 kr", null, "Ja", "Nej");
+		  navigator.notification.confirm("Vill du köpa ett års abonnemang för ditt lag? Konstad 399 kr", null, "Konfirmera ditt In-App köp");
 
 		 return confirm("Vill du k&ouml;pa ett &aring;rs abonnemang f&ouml;r ditt lag?\nKostnad 399:-");
 	     storekit.purchase(productId);
