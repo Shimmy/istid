@@ -22,7 +22,6 @@
 	 
 	     // Initialize
 	     storekit.init({
-	          debug:    true, // Enable IAP messages on the console
 	          ready:    IAP.onReady,
 	          purchase: IAP.onPurchase,
 	          restore:  IAP.onRestore,
@@ -72,7 +71,6 @@
     // Wait for device API libraries to load
     //
     function onLoad() {
-    			console.log("start");
         document.addEventListener("deviceready", onDeviceReady, false);
     }
 
