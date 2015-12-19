@@ -12,20 +12,7 @@
 
 	IAP.load = function () {
 	 //
-	 function alertDismissed() {
-	     // do something
-	 }
 
-	 navigator.notification.alert(
-	     'You are the winner!',  // message
-	     alertDismissed,         // callback
-	     'Game Over',            // title
-	     'Done'                  // buttonName
-	 );
-
-	 // BlackBerry (OS 4.6) / webOS
-	 //
-	 navigator.notification.alert('You are the winner!');
 	     // Check availability of the storekit plugin
 	     if (!window.storekit) {
 	          alert("In-App Purchases not available");
@@ -69,7 +56,7 @@
 	     console.log(errorMessage);
 	};
 	IAP.buy = function(productId){
-		  //navigator.notification.alert("reeerg", null, "Alert", "Close");
+		  navigator.notification.confirm("Vill du köpa ett års abonnemang för ditt lag? Konstad 399 kr", null, "Ja", "Nej");
 
 		 return confirm("Vill du k&ouml;pa ett &aring;rs abonnemang f&ouml;r ditt lag?\nKostnad 399:-");
 	     storekit.purchase(productId);
