@@ -47,6 +47,8 @@
     <preference name="phonegap-version" value="cli-5.2.0" />
     <gap:plugin name="phonegap-plugin-push" source="npm" />
     <gap:plugin name="cc.fovea.plugins.inapppurchase" version="3.4.0" />
+    <plugin name="org.apache.cordova.dialogs" />
+
 
     <!-- Plugins -->
 
