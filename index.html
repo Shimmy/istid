@@ -34,9 +34,10 @@
 	IAP.onReady = function () {
 	     storekit.load(IAP.list, function (products, invalidIds) {
 	          IAP.products = products;
+	          alert(products);
 	          IAP.loaded = true;
 	          for (var i = 0; i < invalidIds.length; ++i) {
-	               console.log("Error: could not load " + invalidIds[i]);
+	               alert("Error: could not load " + invalidIds[i]);
 	          }
 	     });
 	};
