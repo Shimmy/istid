@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>Istid</title>
 <script src="phonegap.js"></script>
 
 <script language="javascript">
@@ -54,7 +55,7 @@
 	     console.log(errorMessage);
 	};
 	IAP.buy = function(productId){
-		alert("Efew");
+		 return confirm("Vill du köpa ett års abonnemang för ditt lag?\nKostnad 399:-")
 	     storekit.purchase(productId);
 	};
 	IAP.restore = function(){
