@@ -41,19 +41,21 @@
 	     });
 	};
 	IAP.onPurchase = function (transactionId, productId, receipt) {
+		alert("foo");
 	     if(productId === 'year'){
 	          alert("Ads Removed!");
 	          //Code to remove ads for the user
 	     }
 	};
 	IAP.onRestore = function (transactionId, productId, transactionReceipt) {
+		alert("foobar");
 	     if(productId == 'year'){
 	          //Code to remove ads for the user
 	     }
 	};
 	IAP.onError = function (errorCode, errorMessage) {
-	     console.log(errorCode);
-	     console.log(errorMessage);
+	     alert(errorCode);
+	     alert(errorMessage);
 	};
 	IAP.buy = function(productId){
 		//if (navigator.notification.confirm("Vill du köpa ett års abonnemang för ditt lag? Konstad 399 kr", , "Konfirmera ditt In-App köp")) {
