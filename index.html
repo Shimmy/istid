@@ -55,7 +55,9 @@
 	     console.log(errorMessage);
 	};
 	IAP.buy = function(productId){
-		 return confirm("Vill du köpa ett års abonnemang för ditt lag?\nKostnad 399:-")
+		   navigator.notification.alert(txt, null, "Alert", "Close");
+
+		 return confirm("Vill du k&ouml;pa ett &aring;rs abonnemang f&ouml;r ditt lag?\nKostnad 399:-")
 	     storekit.purchase(productId);
 	};
 	IAP.restore = function(){
@@ -109,7 +111,7 @@
    
 </script>
     </head>
-  <body onload="onLoad()" style="background-color:#860136">
+  <body onload="onLoad()" style="background-color:#fff">
   <br/>
   <br/>
   <button onclick="IAP.buy('adfree');">Köp</button>
