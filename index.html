@@ -13,7 +13,8 @@
 	 
 	     // Check availability of the storekit plugin
 	     if (!window.storekit) {
-	          console.log("In-App Purchases not available");
+	          alert("In-App Purchases not available");
+
 	          return;
 	     }
 	 
@@ -33,7 +34,7 @@
 	          IAP.products = products;
 	          IAP.loaded = true;
 	          for (var i = 0; i < invalidIds.length; ++i) {
-	               console.log("Error: could not load " + invalidIds[i]);
+	               alert("Error: could not load " + invalidIds[i]);
 	          }
 	     });
 	};
@@ -107,6 +108,8 @@
 </script>
     </head>
   <body onload="onLoad()" style="background-color:#860136">
+  <br/>
+  <br/>
   <button onclick="IAP.buy('adfree');">Köp</button>
   
   </body>
