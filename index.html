@@ -4,73 +4,103 @@
 <script src="phonegap.js"></script>
 
 <script language="javascript">
+    var IAP = {
+        list: [ 'year' ],
+        products: {}
+    };
+    var localStorage = window.localStorage || {};
 
+    IAP.initialize = function () {
+        // Check availability of the storekit plugin
+        if (!window.storekit) {
+            console.log('In-App Purchases not available');
+            return;
+        }
 
-	var IAP = {
-	    list: [ 'year' ],
-	    products: {}
-	};
-	IAP.load = function () {
-	 //
+        // Initialize
+        storekit.init({
+            debug:    true,
+            noAutoFinish: true,
+            ready:    IAP.onReady,
+            purchase: IAP.onPurchase,
+            finish:   IAP.onFinish,
+            restore:  IAP.onRestore,
+            error:    IAP.onError,
+            restoreCompleted: IAP.onRestoreCompleted
+        });
+    };
 
-	     // Check availability of the storekit plugin
-	     if (!window.storekit) {
-	          alert("In-App Purchases not available");
+    IAP.onReady = function () {
+        // Once setup is done, load all product data.
+        storekit.load(IAP.list, function (products, invalidIds) {
+            alert('IAPs loading done:');
+            for (var j = 0; j < products.length; ++j) {
+                var p = products[j];
+                alert('Loaded IAP(' + j + '). title:' + p.title +
+                            ' description:' + p.description +
+                            ' price:' + p.price +
+                            ' id:' + p.id);
+                IAP.products[p.id] = p;
+            }
+            IAP.loaded = true;
+            for (var i = 0; i < invalidIds.length; ++i) {
+                alert('Error: could not load ' + invalidIds[i]);
+            }
+            IAP.render();
+        });
 
-	          return;
-	     }
-	 
-	     // Initialize
-	     storekit.init({
-	          debug:    true, // Enable IAP messages on the console
-	          ready:    IAP.onReady,
-	          purchase: IAP.onPurchase,
-	          restore:  IAP.onRestore,
-	          error:    IAP.onError
-	     });
-	 
-	};
+        // Also check the receipts
+        // storekit.loadReceipts(function (receipts) {
+        //     console.log('appStoreReceipt: ' + receipts.appStoreReceipt);
+        // });
+    };
 
-	IAP.onReady = function () {
-	     storekit.load(IAP.list, function (products, invalidIds) {
-	     	alert("jo");
-	          IAP.products = products;
-	          IAP.loaded = true;
-	          for (var i = 0; i < invalidIds.length; ++i) {
-	               alert("Error: could not load " + invalidIds[i]);
-	          }
-	     });
-	};
-	IAP.onPurchase = function (transactionId, productId, receipt) {
-		alert("foo");
-	     if(productId === 'year'){
-	          alert("Ads Removed!");
-	          //Code to remove ads for the user
-	     }
-	};
-	IAP.onRestore = function (transactionId, productId, transactionReceipt) {
-		alert("foobar");
-	     if(productId == 'year'){
-	          //Code to remove ads for the user
-	     }
-	};
-	IAP.onError = function (errorCode, errorMessage) {
-		alert("error");
-	     alert(errorCode);
-	     alert(errorMessage);
-	};
-	IAP.buy = function(productId){
+    IAP.onPurchase = function (transactionId, productId) {
+        var n = (localStorage['storekit.' + productId]|0) + 1;
+        localStorage['storekit.' + productId] = n;
+        if (IAP.purchaseCallback) {
+            IAP.purchaseCallback(productId);
+            delete IAP.purchaseCallbackl;
+        }
 
-	     storekit.purchase(productId);
-		
-	};
-	IAP.restore = function(){
-		alert("foo");
-	     storekit.restore();
-	};
+        storekit.finish(transactionId);
 
- 
+        storekit.loadReceipts(function (receipts) {
+            console.log('Receipt for appStore = ' + receipts.appStoreReceipt);
+            console.log('Receipt for ' + productId + ' = ' + receipts.forProduct(productId));
+        });
+    };
 
+    IAP.onFinish = function (transactionId, productId) {
+        console.log('Finished transaction for ' + productId + ' : ' + transactionId);
+    };
+
+    IAP.onError = function (errorCode, errorMessage) {
+        alert('Error: ' + errorMessage);
+    };
+
+    IAP.onRestore = function (transactionId, productId) {
+        console.log("Restored: " + productId);
+        var n = (localStorage['storekit.' + productId]|0) + 1;
+        localStorage['storekit.' + productId] = n;
+    };
+
+    IAP.onRestoreCompleted = function () {
+        console.log("Restore Completed");
+    };
+
+    IAP.buy = function (productId, callback) {
+        IAP.purchaseCallback = callback;
+        storekit.purchase(productId);
+    };
+
+    IAP.restore = function () {
+        storekit.restore();
+    };
+
+    IAP.fullVersion = function () {
+        return localStorage['storekit.babygooinapp1'];
+    };
    
 </script>
     </head>
