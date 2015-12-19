@@ -5,17 +5,7 @@
 
 <script language="javascript">
 
-    function onLoad() {
-    	console.log("start");
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-    	IAP.load();
-    }
-
+   
     var IAP = {
         list: [ 'year' ],
         products: {}
@@ -114,6 +104,18 @@
         return localStorage['storekit.babygooinapp1'];
     };
    
+   function onLoad() {
+   	console.log("start");
+       document.addEventListener("deviceready", onDeviceReady, false);
+   }
+
+   // device APIs are available
+   //
+   function onDeviceReady() {
+   	alert("start");
+   	IAP.load();
+   }
+
 </script>
     </head>
       <style>
