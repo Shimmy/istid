@@ -6,10 +6,10 @@
 <script language="javascript">
 
 
-	IAP = {
-	  list: [ "year", "test"]
+	var IAP = {
+	    list: [ 'year' ],
+	    products: {}
 	};
-
 	IAP.load = function () {
 	 //
 
@@ -22,6 +22,7 @@
 	 
 	     // Initialize
 	     storekit.init({
+	          debug:    true, // Enable IAP messages on the console
 	          ready:    IAP.onReady,
 	          purchase: IAP.onPurchase,
 	          restore:  IAP.onRestore,
@@ -54,6 +55,7 @@
 	     }
 	};
 	IAP.onError = function (errorCode, errorMessage) {
+		alert("error");
 	     alert(errorCode);
 	     alert(errorMessage);
 	};
@@ -61,56 +63,14 @@
 		alert(productId);
 		//if (navigator.notification.confirm("Vill du köpa ett års abonnemang för ditt lag? Konstad 399 kr", , "Konfirmera ditt In-App köp")) {
 	     storekit.purchase(productId);
-	     alert("done");
 		//} 
 	};
 	IAP.restore = function(){
+		alert("foo");
 	     storekit.restore();
 	};
 
-    // Wait for device API libraries to load
-    //
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-    	IAP.load();
-
-        // Now safe to use device APIs
-    var push = PushNotification.init({ "android": {"senderID": "392298657548", "sound": "true", "forceShow": "true"}, 
-        "ios": {"alert": "true", "sound": "true"} } );
-
-
-        push.on('registration', function(data) {
-            // data.registrationId
-            //alert(data.registrationId);
-            //document.write(data.registrationId);
-        //   window.location.href="http://team05.hahc.se/?regid="+data.registrationId
-        });
-
-        push.on('notification', function(data) {
-            // data.message,
-            // data.title,
-            // data.count,
-            // data.sound,
-            // data.image,
-            // data.additionalData
-        //    alert("not");
-
-            //alert(data.message);
-        });
-
-        push.on('error', function(e) {
-            // e.message
-            //alert("error");
-          //  window.location.href="http://team05.hahc.se/"
-        });
-    }
-
-
+ 
 
    
 </script>
