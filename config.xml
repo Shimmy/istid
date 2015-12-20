@@ -48,8 +48,11 @@
     <gap:plugin name="phonegap-plugin-push" source="npm" />
     <plugin name="cc.fovea.plugins.inapppurchase" spec="3.4.0" source="pgb" />
     <plugin name="org.apache.cordova.dialogs" />
+    <plugin name="org.apache.cordova.statusbar" />
 
-
+<preference name="StatusBarOverlaysWebView" value="true" /> 
+<preference name="StatusBarBackgroundColor" value="#000000" />
+<preference name="StatusBarStyle" value="lightcontent" />
     <!-- Plugins -->
 
     <!-- Core plugins -->
