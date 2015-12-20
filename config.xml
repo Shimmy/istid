@@ -50,7 +50,7 @@
     <plugin name="org.apache.cordova.dialogs" />
     <plugin name="org.apache.cordova.statusbar" />
 
-<preference name="StatusBarOverlaysWebView" value="true" /> 
+<preference name="StatusBarOverlaysWebView" value="false" /> 
 <preference name="StatusBarBackgroundColor" value="#000000" />
 <preference name="StatusBarStyle" value="lightcontent" />
     <!-- Plugins -->
