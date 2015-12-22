@@ -117,44 +117,35 @@
    }
 
 </script>
-    </head>
-      <style>
-      body {
-        background-color: #EFEFEF;
-        color: #fff;
-        text-align: center;
-        font-family: arial, sans-serif;
-        margin: 0;
-      }
-      a {
-            color: #fff;
 
-      }
-      </style>
-    </head>
+<style type="text/css">
+.circle {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px; 
+    background-color: yellow;
+    margin: 0 auto;
+    top:300px;
+    position: relative;
+    /* width and height can be anything, as long as they're equal */
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<input id="slider" type="range" min="0" max="500" step="1" />
+<div id="circle" class="circle"></div>
+<script>
+$("#slider").mousemove(function(e) {
+    width = $(this).val();
+    height = width;
+    $("#circle").width(width);
+    $("#circle").height(width);
+    $("#circle").css("top",300-(width/2)+"px");
+    
+});
+</script>
 
-      <body onload="onLoad()" style="background-color:#860136">
-
-        <div style="margin-top:20%; background-color: #860136;">
-        <center>
-        <img src="Haninge_Anchors_HC_logo.png"/>
-        <h3>Köp ett års abonnemang för ditt lag </h3>
-  
-        <br/>
-         <button onclick="IAP.buy('year');">Köp ett års abonnemang</button>
-        <br/>
-        <span style="font-size:12px">
-        Vid frågor kontakta conny@shoogle.se
-        </span>
-        <br/>
-        <br/>
-        <a href="/">Gå till startsidan</a>
-        </center>
-        </div>
-      </body>
-      <!-- This file lives in public/404.html -->
-
-    </body>
   
   </body>
 
