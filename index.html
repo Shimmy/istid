@@ -144,6 +144,14 @@ $("#slider").mousemove(function(e) {
     $("#circle").css("top",300-(width/2)+"px");
     
 });
+$("#slider").change(function(e) {
+    width = $(this).val();
+    height = width;
+    $("#circle").width(width);
+    $("#circle").height(width);
+    $("#circle").css("top",300-(width/2)+"px");
+    
+});
 </script>
 
   
