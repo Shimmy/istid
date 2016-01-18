@@ -6,7 +6,7 @@
 
 
 	IAP = {
-	  list: [ "adfree"]
+	  list: [ "year"]
 	};
 
 	IAP.load = function () {
@@ -38,13 +38,13 @@
 	     });
 	};
 	IAP.onPurchase = function (transactionId, productId, receipt) {
-	     if(productId === 'adfree'){
+	     if(productId === 'year'){
 	          alert("Ads Removed!");
 	          //Code to remove ads for the user
 	     }
 	};
 	IAP.onRestore = function (transactionId, productId, transactionReceipt) {
-	     if(productId == 'adfree'){
+	     if(productId == 'year'){
 	          //Code to remove ads for the user
 	     }
 	};
@@ -107,7 +107,7 @@
 </script>
     </head>
   <body onload="onLoad()" style="background-color:#860136">
-  <button onclick="IAP.buy('adfree');">Köp</button>
+  <button onclick="IAP.buy('year');">Köp</button>
   
   </body>
 
