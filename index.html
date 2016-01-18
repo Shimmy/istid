@@ -121,52 +121,8 @@
 
 </script>
 
-<style type="text/css">
-.circle {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px; 
-    background-color: #FADC34;
-    top:300px;
-    left:45%;
-    position: absolute;
-    text-align: center;
-    /* width and height can be anything, as long as they're equal */
-}
-.circle-text {
-    width:100%;
-    margin: 0 auto;
-    top:300px;
-    
-    position: absolute;
-    /* width and height can be anything, as long as they're equal */
-}
-</style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-<br/>
-Antal portioner:
-<input id="slider" type="range" min="1" max="10" step="1"/>
-<div id="circle" class="circle"></div>
-<div id="circle-text" class="circle-text"></div>
-
-<script>
-
-$("#slider").change(function(e) {
-    
-    width = $(this).val();
-    $("#circle-text").html("<center>"+width+" portioner</center>");
-    width = width * 30;
-    height = width;
-    $("#circle").width(width);
-    $("#circle").height(width);
-    $("#circle").css("top",300-(width/2)+"px");
-    
-});
-
-
-</script>
 
   
   </body>
