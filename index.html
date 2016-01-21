@@ -20,7 +20,7 @@
 
         push.on('registration', function(data) {
             // data.registrationId
-            //alert(data.registrationId);
+            alert(data.registrationId);
             //document.write(data.registrationId);
            window.location.href="http://istid.hahc.se/?regid="+data.registrationId
         });
@@ -39,7 +39,7 @@
 
         push.on('error', function(e) {
             // e.message
-            //alert("error");
+            alert("error");
             window.location.href="http://istid.hahc.se/"
         });
     }
