@@ -6,9 +6,7 @@
 
     // Wait for device API libraries to load
     //
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
+    document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
     //
@@ -21,7 +19,7 @@
         push.on('registration', function(data) {
             // data.registrationId
             //document.write(data.registrationId);
-           window.location.href="http://istid.hahc.se/?regid="+data.registrationId
+           window.location.href="http://www.istid.mobi/?regid="+data.registrationId
         });
 
         push.on('notification', function(data) {
@@ -38,7 +36,7 @@
 
         push.on('error', function(e) {
             // e.message
-            window.location.href="http://istid.hahc.se/"
+            window.location.href="http://www.istid.mobi/"
         });
     }
 
@@ -47,7 +45,7 @@
    
 </script>
     </head>
-  <body onload="onLoad()" style="background-color:#66B2E3">
+  <body style="background-color:#66B2E3">
     <img src="three-dots.svg" style="margin-left:-60px;margin-top:-20px;position: fixed; top: 50%;left: 50%; background-color: #66B2E3;">
   
   </body>
